@@ -25,31 +25,16 @@ function initMobileMenu() {
   if (!menuToggle || !navMenu) return;
 
   menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
-    
-    // Toggle menu icon between burger and close state
-    const icon = menuToggle.querySelector('i');
-    if (icon) {
-      if (navMenu.classList.contains('active')) {
-        icon.className = 'lucide lucide-x';
-        icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
-      } else {
-        icon.className = 'lucide lucide-menu';
-        icon.innerHTML = '<line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line>';
-      }
-    }
   });
 
   // Close menu when a link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        if (icon) {
-          icon.className = 'lucide lucide-menu';
-          icon.innerHTML = '<line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line>';
-        }
       }
     });
   });
