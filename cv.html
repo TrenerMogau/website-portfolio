@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mogau Mothapo | Professional Resume</title>
+  <meta name="description" content="Resume of Mogau Mothapo, Cloud & DevOps Engineer and Software Engineering Student.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet (Self-contained for easy printing and styling) -->
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #111827;
+      --text-color: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --accent: #06b6d4;
+      --accent-indigo: #6366f1;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+
+    /* Resume container */
+    .resume-wrapper {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    /* Print control floating bar */
+    .print-bar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .btn-back:hover {
+      color: var(--accent);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-indigo) 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+    }
+
+    /* Header styling */
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 25px;
+      margin-bottom: 30px;
+    }
+
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .name-title h1 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-indigo) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .name-title h2 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .status-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .badge-availability {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--accent-indigo);
+      border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    /* Contact details grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-item a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    .contact-item svg {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    .resume-section {
+      margin-bottom: 30px;
+    }
+
+    .resume-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--text-color);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Skills layout */
+    .skills-category {
+      margin-bottom: 12px;
+    }
+
+    .skills-category strong {
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .skills-category span {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-left: 8px;
+    }
+
+    /* Experience & Education list */
+    .exp-item {
+      margin-bottom: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .exp-role {
+      font-weight: 700;
+      color: var(--text-color);
+      font-size: 1.05rem;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .exp-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-family: var(--font-heading);
+    }
+
+    .exp-details {
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .exp-details li {
+      margin-bottom: 4px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .resume-wrapper {
+        padding: 30px 20px;
+      }
+
+      .header-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .status-badges {
+        align-items: flex-start;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .name-title h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* ==========================================
+       Print Optimization Stylesheet
+       ========================================== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 15mm;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #1f2937 !important;
+        padding: 0 !important;
+        font-size: 10pt !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .print-bar {
+        display: none !important;
+      }
+
+      .resume-wrapper {
+        background: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      header {
+        border-bottom-color: #e5e7eb !important;
+      }
+
+      .name-title h1 {
+        font-size: 24pt !important;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: #111827 !important;
+      }
+
+      .name-title h2 {
+        color: #0d9488 !important; /* Elegant teal */
+      }
+
+      .badge {
+        background: #f3f4f6 !important;
+        color: #374151 !important;
+        border-color: #d1d5db !important;
+      }
+
+      .contact-grid {
+        color: #4b5563 !important;
+      }
+
+      .contact-item a {
+        color: #4b5563 !important;
+      }
+
+      .contact-item svg {
+        color: #0d9488 !important;
+      }
+
+      .resume-section h3 {
+        color: #111827 !important;
+        border-bottom-color: #d1d5db !important;
+      }
+
+      .summary-text, .skills-category span, .exp-details, .exp-date {
+        color: #374151 !important;
+      }
+
+      .skills-category strong {
+        color: #0d9488 !important;
+      }
+
+      .exp-role {
+        color: #111827 !important;
+      }
+
+      .exp-company {
+        color: #0d9488 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Print Controls -->
+  <div class="print-bar">
+    <a href="index.html" class="btn-back">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Portfolio
+    </a>
+    
+    <button onclick="window.print()" class="btn-print">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Save as PDF / Print CV
+    </button>
+  </div>
+
+  <!-- Main printable layout -->
+  <div class="resume-wrapper">
+    <header>
+      <div class="header-main">
+        <div class="name-title">
+          <h1>Mogau Mothapo</h1>
+          <h2>Cloud & DevOps Engineer</h2>
+        </div>
+        <div class="status-badges">
+          <span class="badge">📍 South Africa</span>
+          <span class="badge badge-availability">💼 Available for DevOps & Cloud Roles</span>
+        </div>
+      </div>
+      
+      <!-- Contact list -->
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 9.92z"></path></svg>
+          <a href="tel:+27823904481">+27 82 390 4481</a>
+        </div>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <a href="mailto:trener.mogau.dev@gmail.com">trener.mogau.dev@gmail.com</a>
+        </div>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <a href="https://linkedin.com/in/mogau-mothapo-trener" target="_blank">linkedin.com/in/mogau-mothapo-trener</a>
+        </div>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <a href="https://github.com/TrenerMogau" target="_blank">github.com/TrenerMogau</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="resume-section">
+      <h3>Professional Summary</h3>
+      <p class="summary-text">
+        Software Engineering student with a strong focus on Cloud Engineering, DevOps, Infrastructure as Code (IaC), and AI-powered developer tooling. Passionate about building scalable cloud-native systems, automating infrastructure, improving developer workflows, and leveraging AI to solve real engineering challenges. Combines academic software engineering knowledge with practical hands-on experience through cloud labs, CI/CD pipelines, and continuous learning initiatives.
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="resume-section">
+      <h3>Technical Skills</h3>
+      <div class="skills-category">
+        <strong>Programming:</strong>
+        <span>Java, Python, TypeScript, SQL, Bash Scripting</span>
+      </div>
+      <div class="skills-category">
+        <strong>Cloud Platforms:</strong>
+        <span>AWS (EC2, S3, IAM), Microsoft Azure (VM, networking fundamentals)</span>
+      </div>
+      <div class="skills-category">
+        <strong>Infrastructure & DevOps:</strong>
+        <span>Terraform, Docker, Git, GitHub Actions, GitLab CI/CD, Linux Administration, Infrastructure as Code (IaC)</span>
+      </div>
+      <div class="skills-category">
+        <strong>Software Engineering:</strong>
+        <span>Object-Oriented Programming, Client-Server Architecture, API Design, Automated Testing, Agile Development</span>
+      </div>
+    </section>
+
+    <!-- Project Experience -->
+    <section class="resume-section">
+      <h3>Key Projects</h3>
+      
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-role">Collaborative Lead / Backend Developer</span> - <span class="exp-company">Robot Worlds</span>
+          </div>
+          <span class="exp-date">Java Project</span>
+        </div>
+        <ul class="exp-details">
+          <li>Collaborated in a team-based Java software engineering project implementing client-server architectures and custom command-routing protocols.</li>
+          <li>Increased automated unit and integration test coverage from <strong>26% to over 90%</strong>.</li>
+          <li>Built automated compilation, code analysis, and testing pipelines (CI/CD).</li>
+          <li>Tested interoperability against multiple external team clients/servers.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-role">Technical Strategist & Integrator</span> - <span class="exp-company">Healing Botanicals</span>
+          </div>
+          <span class="exp-date">Active Business Initiative</span>
+        </div>
+        <ul class="exp-details">
+          <li>Contributing to digital growth and technology operations of an expanding business.</li>
+          <li>Configuring business automation processes, online presence scaling, and e-commerce setups.</li>
+          <li>Aligning business objectives with modern digital platforms and scalable growth strategies.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-role">Founder & Architect</span> - <span class="exp-company">TrustLedger</span>
+          </div>
+          <span class="exp-date">Cloud Platform Concept</span>
+        </div>
+        <ul class="exp-details">
+          <li>Architected a conceptual cloud platform focused on trust, digital audit trails, and transparency.</li>
+          <li>Designed integration of secure storage, automated compliance analysis, and AI-powered insights.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section" style="margin-bottom: 0;">
+      <h3>Education & Learning</h3>
+      
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-role">Software Engineering Student</span> - <span class="exp-company">WeThinkCode_ Academy</span>
+          </div>
+          <span class="exp-date">2025 - Present</span>
+        </div>
+        <div class="exp-details" style="list-style-type: none; padding-left: 0;">
+          Focused on high-performance OOP systems, databases, client-server architectures, continuous delivery, and collaborative development practices in agile teams.
+        </div>
+      </div>
+
+      <div class="exp-item" style="margin-top: 15px; margin-bottom: 0;">
+        <div class="exp-header">
+          <div>
+            <span class="exp-role">Continuous DevOps Learning</span> - <span class="exp-company">KodeKloud & Azure</span>
+          </div>
+          <span class="exp-date">Ongoing</span>
+        </div>
+        <ul class="exp-details">
+          <li>Completed hands-on KodeKloud tasks across Docker, Linux admin, AWS, and Git troubleshooting workflows.</li>
+          <li>Preparing for the **Microsoft Azure Fundamentals (AZ-900)** certification.</li>
+          <li>Participated in AWS-focused IaC event centered on Terraform cloud automation.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
